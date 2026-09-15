@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제비우스: SKY FRONT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="cabinet" aria-label="제비우스 슈팅게임">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span><span>SKY FRONT</span></div>
+        <div class="status"><span>ZONE 01</span><span id="lifeStatus">●●●</span></div>
+      </header>
+      <div class="screen-wrap">
+        <canvas id="gameCanvas" width="480" height="720" aria-label="게임 화면"></canvas>
+        <div id="startPanel" class="overlay">
+          <p class="eyebrow">OPERATION SKY FRONT</p>
+          <h1>제비우스</h1>
+          <p class="lead">하늘을 가르는 전투기.<br>끝없이 내려오는 적 편대를 돌파하라.</p>
+          <button id="startButton" class="primary-button">출격하기 <span>↗</span></button>
+          <p class="controls">이동 WASD / 방향키 · 발사 SPACE · 폭격 B</p>
+        </div>
+        <div id="gameOverPanel" class="overlay hidden">
+          <p class="eyebrow">MISSION REPORT</p>
+          <h2>전투 종료</h2>
+          <p class="final-score">SCORE <strong id="finalScore">000000</strong></p>
+          <button id="restartButton" class="primary-button">다시 출격 <span>↗</span></button>
+        </div>
+      </div>
+      <footer class="bottombar">
+        <div><span class="label">SCORE</span><strong id="score">000000</strong></div>
+        <div><span class="label">HIGH</span><strong id="highScore">000000</strong></div>
+        <div><span class="label">BOMB</span><strong id="bombs">●●</strong></div>
+      </footer>
+    </section>
+    <aside class="briefing">
+      <p class="eyebrow">FIELD NOTES / 01</p>
+      <h2>푸른 전선 위의<br><em>마지막 편대</em></h2>
+      <p>종스크롤 전장의 흐름을 읽고, 적 편대와 지상 기지를 동시에 제압하세요.</p>
+      <div class="key-list">
+        <div><kbd>WASD</kbd><span>기체 이동</span></div>
+        <div><kbd>SPACE</kbd><span>기관포 발사</span></div>
+        <div><kbd>B</kbd><span>지상 폭격</span></div>
+      </div>
+      <div class="signal"><span></span> AUDIO SYSTEM READY</div>
+    </aside>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
