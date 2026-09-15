@@ -90,7 +90,7 @@ function endGame() {
 
 function updateHud() {
   scoreEl.textContent = String(score).padStart(6, '0');
-  bombsEl.textContent = '●'.repeat(bombs) + '○'.repeat(2 - bombs);
+  bombsEl.textContent = `${bombs}/2`;
   lifeStatusEl.textContent = '●'.repeat(lives) + '○'.repeat(3 - lives);
 }
 
@@ -104,7 +104,11 @@ function shoot() {
 function bomb() {
   if (bombs <= 0) return;
   bombs -= 1;
-  enemies.forEach(enemy => { enemy.hp -= 2; burst(enemy.x, enemy.y, '#f0b323', 8); });
+  enemies.forEach(enemy => {
+    enemy.hp -= 2;
+    burst(enemy.x, enemy.y, '#f0b323', 8);
+    if (enemy.hp <= 0) awardEnemyDefeat(enemy);
+  });
   enemyBullets = [];
   tone(90, .4, 'sawtooth', .06, 360);
   updateHud();
@@ -123,6 +127,12 @@ function burst(x, y, color, amount = 12) {
   }
 }
 
+function awardEnemyDefeat(enemy) {
+  score += enemy.type === 'bomber' ? 300 : 100;
+  burst(enemy.x, enemy.y, '#e65a3d', 18);
+  updateHud();
+}
+
 function hitPlayer() {
   if (player.invincible > 0) return;
   lives -= 1;
@@ -134,7 +144,11 @@ function hitPlayer() {
 }
 
 function overlaps(a, b) {
-  return Math.abs(a.x - b.x) < (a.w + (b.r || b.w)) * .5 && Math.abs(a.y - b.y) < (a.h + (b.r || b.h)) * .5;
+  const aWidth = a.w || a.r * 2;
+  const aHeight = a.h || a.r * 2;
+  const bWidth = b.w || b.r * 2;
+  const bHeight = b.h || b.r * 2;
+  return Math.abs(a.x - b.x) < (aWidth + bWidth) * .5 && Math.abs(a.y - b.y) < (aHeight + bHeight) * .5;
 }
 
 function update(dt) {
@@ -169,7 +183,7 @@ function update(dt) {
       enemy.hp -= 1;
       burst(bullet.x, bullet.y, '#f0b323', 5);
       tone(260, .04, 'square', .018, 100);
-      if (enemy.hp <= 0) { score += enemy.type === 'bomber' ? 300 : 100; burst(enemy.x, enemy.y, '#e65a3d', 18); updateHud(); }
+      if (enemy.hp <= 0) awardEnemyDefeat(enemy);
     }
   }));
   enemyBullets.forEach(bullet => { if (overlaps(bullet, player)) bullet.y = H + 100, hitPlayer(); });
