@@ -1,6 +1,7 @@
 # Environment variables
 #깃허브에 업로드하지 않을 파일들을 명시하는 곳입니다.
 .env
+.venv
 아이폰/
 build/
 dist/

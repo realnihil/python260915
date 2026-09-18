@@ -419,7 +419,9 @@ https://www.anaconda.com/products/individual
 
 *pandas자료
 https://pandas.pydata.org/
+getting started에 가서 cheat sheet(2장)이 유용하다
 https://matplotlib.org/
+user guide의 quick start에 간단한 사용법이 있다.
 
 
 *LLM에서 자동으로 분석하고 시각화 
@@ -428,6 +430,13 @@ https://matplotlib.org/
 matplotlib을 사용한 코드를 생성해줘.
 남성과 여성의 생존율을 구해서 막대그래프로 출력하는 코드까지 생성해줘. 
 
+*미국 S&P500 주식 데이터 분석
+위의 파일은 S&P500 주식 데이터인데,
+2000년초부터 2019년말까지의 데이터를 먼저 데이터 클렌징을 하고,
+다각도로 분석하는 파이썬의 pandas를 사용한 코드를 생성해줘.
+종가를 기준으로 라인 그래프를 그리는 코드를 주피터 노트북 파일 antigravity_S&P500.ipynb으로 생성해줘
+
+
 *국가통계포탈
 https://kosis.kr/index/index.do
 출생아수, 합계출산율, 자연증가 등 (검색어) 
@@ -435,9 +444,18 @@ https://kosis.kr/index/index.do
 이 파일은 대한민국의 출생아숫자와 합계출산율을 저장한 파일인데, 
 먼저 데이터 클랜징을 하고,  
 이 파일을 파이썬의 pandas를 사용해서 다각도 분석해주고, 
-출생아숫자를 년도별로 라인그래프로 그려줘 
+출생아숫자를 년도별로 라인그래프로 그려줘.
+한글이 깨지지 않게 신경써서 만들어야 해.
 
 한글이 깨지는데 한글이 깨지는 문제를 해결해줘 
+
+*마켓컬리
+https://www.kurly.com/goods/1001353793?collectionCode=sale231107
+
+위의 주소에서 파이썬의 BeautifulSoup을 사용해서 댓글을 300개를 크롤링하고,
+댓글의 긍정적인 의견과 부정적인 의견을 pandas로 분석을하고, 바형태의
+그래프로 그려줘. pyqt6을 사용해서 GUI 형태로 만들고, 왼쪽에는 댓글 리스트를 만들어 
+출력하고 오른쪽에는 바차트를 출력하는 형태로 만들어줘
 
 
 (파일 업로드) 
