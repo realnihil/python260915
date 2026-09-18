@@ -54,7 +54,7 @@ class DemoForm(QMainWindow, form_class):
         self.prodPrice.returnPressed.connect(lambda: self.focusNextChild())
 
         # 더블클릭 시그널
-        self.tableWidget.doubleClicked.connect(self.doubleClick())
+        self.tableWidget.doubleClicked.connect(self.doubleClick)
 
     def addProduct(self):
         self.name = self.prodName.text()
@@ -120,11 +120,16 @@ class DemoForm(QMainWindow, form_class):
 
         self.prodID.setText(self.tableWidget.item(current_row, 0).text())
         self.prodName.setText(self.tableWidget.item(current_row, 1).text())
-        self.prodPrice.setText(self.tableWidget.item(current_row, 2).text() )
+        self.prodPrice.setText(self.tableWidget.item(current_row, 2).text())
 
-
-if __name__ == "__main__":
+def main() -> None:
+    from PySide6.QtWidgets import QApplication
+    
     app = QApplication(sys.argv)
     demoForm = DemoForm()
     demoForm.show()
     app.exec()
+
+
+if __name__ == "__main__":
+    main()
